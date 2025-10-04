@@ -1,0 +1,9 @@
+.custom-btn {
+    width: 444px;
+    height: 54px;
+
+    background: transparent linear-gradient(269deg, #2F4FDD 0%, #08377A 100%) 0% 0% no-repeat padding-box;
+    border: 1px solid #FFFFFF;
+    border-radius: 90px;
+
+}

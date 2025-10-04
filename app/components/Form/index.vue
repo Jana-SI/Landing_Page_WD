@@ -1,25 +1,58 @@
 <template>
   <div>
-    <form @submit.prevent="handleSubmit" class="form-lead">
+    <form class="custom-form" @submit.prevent="handleSubmit">
       <fieldset>
+
         <!-- Campo E-mail -->
-        <Input id="E-mail" type="email" v-model="email" @blur="validateEmail" />
-        <span v-if="errors.email">{{ errors.email }}</span>
+        <div class="form-group">
+          <Input
+            label="E-mail"
+            type="email"
+            v-model="email"
+            :class="{ 'is-invalid': errors.email }"
+            @blur="validateEmail"
+          />
+          <div v-if="errors.email" class="invalid-feedback">
+            {{ errors.email }}
+          </div>
+        </div>
 
         <!-- Campo WhatsApp -->
-        <Input id="WhatsApp" type="tel" v-model="whatsapp" @blur="validateWhatsapp" @input="maskWhatsapp" />
-        <span v-if="errors.whatsapp">{{ errors.whatsapp }}</span>
+        <div class="form-group">
+          <Input
+            label="WhatsApp"
+            type="tel"
+            v-model="whatsapp"
+            :class="{ 'is-invalid': errors.whatsapp }"
+            @blur="validateWhatsapp"
+            @input="maskWhatsapp"
+          />
+          <div v-if="errors.whatsapp" class="invalid-feedback">
+            {{ errors.whatsapp }}
+          </div>
+        </div>
 
-        <Button type="submit">Enviar</Button>
+        <Button type="submit">
+          <span class="text-btn">Enviar</span>
+        </Button>
 
-        <p v-if="successMessage">{{ successMessage }}</p>
+        <!-- Mensagem de sucesso -->
+        <div v-if="successMessage" class="alert alert-success">
+          {{ successMessage }}
+        </div>
+
+        <!-- Mensagem de erro geral -->
+        <div v-if="generalError" class="alert alert-danger">
+          {{ generalError }}
+        </div>
+
       </fieldset>
     </form>
 
     <!-- Exibição do último dado salvo -->
     <div v-if="dados" class="dados-enviados">
-      <h3>Último envio:</h3>
-      <p>📧 {{ dados.email }} | 📱 {{ dados.whatsapp }}</p>
+      <h3>📋 Informações salvas:</h3>
+      <p>📧 {{ dados.email }} <br> 📱 {{ dados.whatsapp }}</p>
     </div>
   </div>
 </template>
@@ -31,9 +64,12 @@ const email = ref("");
 const whatsapp = ref("");
 const errors = ref({});
 const successMessage = ref("");
+const generalError = ref("");
 const dados = ref(null);
 
 onMounted(() => {
+  localStorage.removeItem("dadosForm");
+  
   const salvo = localStorage.getItem("dadosForm");
   if (salvo) {
     dados.value = JSON.parse(salvo);
@@ -76,6 +112,7 @@ const handleSubmit = () => {
 
   if (Object.keys(errors.value).length === 0) {
     successMessage.value = "Formulário enviado com sucesso!";
+    generalError.value = "";
     dados.value = {
       email: email.value,
       whatsapp: whatsapp.value,
@@ -85,12 +122,13 @@ const handleSubmit = () => {
     whatsapp.value = "";
 
     setTimeout(() => {
-      dados.value = null;
-      localStorage.removeItem("dadosForm");
       successMessage.value = "";
+      dados.value = null; // Isso vai esconder os dados após 5 segundos
+      localStorage.removeItem("dadosForm");      
     }, 5000);
   } else {
     successMessage.value = "";
+    generalError.value = "Corrija os erros antes de enviar o formulário.";
   }
 };
 </script>
