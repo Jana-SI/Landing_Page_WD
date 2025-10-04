@@ -1,7 +1,7 @@
 <template>
   <div>
-    <Header></Header>
-    <PageContainer></PageContainer>
+    <Header/>
+    <PageContainer/>
   </div>
 </template>
 
