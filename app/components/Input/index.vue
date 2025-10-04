@@ -1,6 +1,6 @@
 <template>
   <div>
-    <label :for="id">{{ label }}</label>
+    <label :for="id">{{ id }}</label>
     <input
       :id="id"
       :type="type"
@@ -13,7 +13,7 @@
 
 <script setup>
 const props = defineProps({
-  label: { type: String, required: true },
+  id: { type: String, required: true },
   id: { type: String, required: true },
   type: { type: String, default: "text" },
   modelValue: { type: String, required: true },

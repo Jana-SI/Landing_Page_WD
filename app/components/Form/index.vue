@@ -1,28 +1,19 @@
 <template>
   <div>
     <form @submit.prevent="handleSubmit" class="form-lead">
-      <!-- Campo E-mail -->
-      <Input
-        label="E-mail"
-        type="email"
-        v-model="email"
-        @blur="validateEmail"
-      />
-      <span v-if="errors.email">{{ errors.email }}</span>
+      <fieldset>
+        <!-- Campo E-mail -->
+        <Input id="E-mail" type="email" v-model="email" @blur="validateEmail" />
+        <span v-if="errors.email">{{ errors.email }}</span>
 
-      <!-- Campo WhatsApp -->
-      <Input
-        label="WhatsApp"
-        type="tel"
-        v-model="whatsapp"
-        @blur="validateWhatsapp"
-        @input="maskWhatsapp"
-      />
-      <span v-if="errors.whatsapp">{{ errors.whatsapp }}</span>
+        <!-- Campo WhatsApp -->
+        <Input id="WhatsApp" type="tel" v-model="whatsapp" @blur="validateWhatsapp" @input="maskWhatsapp" />
+        <span v-if="errors.whatsapp">{{ errors.whatsapp }}</span>
 
-      <Button type="submit">Enviar</Button>
+        <Button type="submit">Enviar</Button>
 
-      <p v-if="successMessage">{{ successMessage }}</p>
+        <p v-if="successMessage">{{ successMessage }}</p>
+      </fieldset>
     </form>
 
     <!-- Exibição do último dado salvo -->
