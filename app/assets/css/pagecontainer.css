@@ -10,7 +10,9 @@ section {
   font-weight: 300;
   font-size: 24px;
   line-height: 56px;
+  letter-spacing: 0;
   color: #252525;
+  opacity: 1;
 }
 
 .titulo {
@@ -19,7 +21,9 @@ section {
   font-family: 'Poppins', sans-serif;
   font-weight: 900;
   font-size: 32px;
+  letter-spacing: 0;
   color: #252525;
+  opacity: 1;
 }
 
 .texto {
@@ -30,10 +34,12 @@ section {
   font-weight: 400;
   font-size: 16px;
   line-height: 28px;
+  letter-spacing: 0;
   color: #252525;
+  opacity: 1;
 }
 
-/* Indicadores */
+/* Indicadores do carrossel */
 .custom-indicators {
   display: flex;
   justify-content: center;
@@ -51,64 +57,41 @@ section {
 }
 
 .indicator-block.active {
+  height: 8px;
   width: 39px;
-  opacity: 1;
+  background-color: #08377A;
 }
 
-/* Removido col-md-10 e offset-md-2 */
-.card-column {
-  box-sizing: border-box;
-  padding-left: 8px;
-  padding-right: 8px;
+.col-md-10 {
+  margin: 0 139px;
+  padding: 0 !important;
 }
 
-/* Controles do carrossel */
-.carousel-control-next,
-.carousel-control-prev {
-  width: 10%;
-  max-width: 40px;
+.col-md-6 {
+  padding: 0 !important;
 }
 
 @media (max-width: 768px) {
-  .carousel-inner {
-    overflow: hidden;
-  }
-
-  .carousel-item .row {
-    margin: 0 !important;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 16px; /* espaçamento entre os cards */
-  }
-
-  .card-column {
-    flex: 0 0 calc(50% - 8px); /* 2 por linha, considerando o gap */
-    max-width: calc(50% - 8px);
-    padding: 0 !important;
-  }
-
   .titulo,
   .texto {
     margin: 0 !important;
-    padding: 0 24px !important;
+    padding: 0 36px !important;
+  }
+
+  .carousel-inner {
+    overflow: hidden;
   }
 
   body,
   html {
     overflow-x: hidden;
   }
-}
 
-/* Desktop - 4 por linha */
-@media (min-width: 769px) {
-  .carousel-item .row {
-    gap: 16px; /* mantém espaçamento também no desktop */
+  .col-md-10 {
+    margin: 0 0 0 41px !important;
+    padding-left: 16px !important;
+    padding-top: 16px !important;
+
   }
 
-  .card-column {
-    flex: 0 0 calc(25% - 12px);
-    max-width: calc(25% - 12px);
-    padding: 0 !important;
-  }
 }

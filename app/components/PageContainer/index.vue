@@ -6,21 +6,19 @@
                     <h2 class="pre-titulo">Texto aqui</h2>
                     <h1 class="titulo">Mais outro bem texto aqui</h1>
                     <p class="texto">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mattis risus sit amet libero
-                        porttitor laoreet. Nullam ut volutpat nisi. Phasellus id tempus orci. Donec eget orci eget dolor
-                        condimentum sodales.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mattis risus sit amet libero porttitor laoreet. Nullam ut volutpat nisi. Phasellus id tempus orci. Donec eget orci eget dolor condimentum sodales.
                     </p>
                 </div>
             </div>
 
             <div class="row">
-                <div class="d-flex justify-content-center">
+                <div class="col-md-10 offset-md-1">
                     <div id="cardCarousel" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             <div v-for="(group, index) in groupedCards" :key="index"
                                 :class="['carousel-item', index === 0 ? 'active' : '']">
-                                <div class="row g-3 justify-content-center">
-                                    <div v-for="card in group" :key="card" class="card-column">
+                                <div class="row">
+                                    <div v-for="card in group" :key="card" class="col-12 col-md-6 col-lg-3">
                                         <Card :title="card.title" :description="card.description" />
                                     </div>
                                 </div>
@@ -66,7 +64,7 @@ let bsCarousel = null
 
 function groupCards() {
     const isMobile = window.innerWidth < 768
-    const groupSize = isMobile ? 2 : 4
+    const groupSize = isMobile ? 1 : 4
 
     groupedCards.value = []
     for (let i = 0; i < cards.length; i += groupSize) {
