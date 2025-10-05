@@ -1,21 +1,16 @@
 section {
   background-color: #F2F2F2;
+  padding: 42px 0 46px 0;
 }
 
-.row {
-  --bs-gutter-x: 26px;
-}
-
+/* Títulos e texto */
 .pre-titulo {
   text-align: center;
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
   font-size: 24px;
   line-height: 56px;
-  letter-spacing: 0;
   color: #252525;
-  opacity: 1;
-
 }
 
 .titulo {
@@ -24,9 +19,7 @@ section {
   font-family: 'Poppins', sans-serif;
   font-weight: 900;
   font-size: 32px;
-  letter-spacing: 0;
   color: #252525;
-  opacity: 1
 }
 
 .texto {
@@ -37,12 +30,10 @@ section {
   font-weight: 400;
   font-size: 16px;
   line-height: 28px;
-  letter-spacing: 0;
   color: #252525;
-  opacity: 1;
-
 }
 
+/* Indicadores */
 .custom-indicators {
   display: flex;
   justify-content: center;
@@ -60,53 +51,64 @@ section {
 }
 
 .indicator-block.active {
-  height: 8px;
   width: 39px;
-  background-color: #08377A;
+  opacity: 1;
 }
 
-.col-md-10 {
-  margin: 0 139px 139px 139px;
-  padding: 0 !important;
-}
-
-.col-md-6 {
-  padding: 0 !important;
-}
-
+/* Removido col-md-10 e offset-md-2 */
 .card-column {
-  padding: 0 13px;
   box-sizing: border-box;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
-.carousel-control-next, .carousel-control-prev {
+/* Controles do carrossel */
+.carousel-control-next,
+.carousel-control-prev {
   width: 10%;
   max-width: 40px;
 }
 
 @media (max-width: 768px) {
-
-  .titulo,
-  .texto {
-    margin: 0 !important;
-    padding: 0 36px !important;
-  }
-
-  .col-md-10 {
-    margin: 0 0 0 41px !important;
-    padding-left: 16px !important;
-    padding-top: 16px !important;
-
-  }
-
   .carousel-inner {
     overflow: hidden;
   }
 
-  /* Evita espaço extra */
-  body, html {
-    overflow-x: hidden;
+  .carousel-item .row {
+    margin: 0 !important;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px; /* espaçamento entre os cards */
   }
 
+  .card-column {
+    flex: 0 0 calc(50% - 8px); /* 2 por linha, considerando o gap */
+    max-width: calc(50% - 8px);
+    padding: 0 !important;
+  }
 
+  .titulo,
+  .texto {
+    margin: 0 !important;
+    padding: 0 24px !important;
+  }
+
+  body,
+  html {
+    overflow-x: hidden;
+  }
+}
+
+/* Desktop - 4 por linha */
+@media (min-width: 769px) {
+  .carousel-item .row {
+    gap: 16px; /* mantém espaçamento também no desktop */
+  }
+
+  .card-column {
+    flex: 0 0 calc(25% - 12px);
+    max-width: calc(25% - 12px);
+    padding: 0 !important;
+  }
 }
