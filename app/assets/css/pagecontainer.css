@@ -1,37 +1,37 @@
-section{
-    background-color: #F2F2F2;
+section {
+  background-color: #F2F2F2;
+}
+
+.row {
+  --bs-gutter-x: 26px;
 }
 
 .pre-titulo {
-    margin-bottom: -20px !important;
-
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 300;
-    font-size: 24px;
-    line-height: 56px;
-    letter-spacing: 0;
-    color: #252525;
-    opacity: 1;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 56px;
+  letter-spacing: 0;
+  color: #252525;
+  opacity: 1;
 
 }
 
 .titulo {
-    margin-top: -20px !important;
-
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 900;
-    font-size: 32px;
-    line-height: 56px;
-    letter-spacing: 0;
-    color: #252525;
-    opacity: 1
+  margin-top: -20px !important;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 900;
+  font-size: 32px;
+  letter-spacing: 0;
+  color: #252525;
+  opacity: 1
 }
 
 .texto {
-margin-top: 15px !important;
-margin-bottom: 20px !important;
+  margin-top: 15px !important;
+  margin-bottom: 20px !important;
   text-align: center;
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
@@ -65,8 +65,48 @@ margin-bottom: 20px !important;
   background-color: #08377A;
 }
 
-.col-md-10{
-    margin-left: 139px !important;
-    margin-bottom: 139px !important;
-    padding: 0 !important;
+.col-md-10 {
+  margin: 0 139px 139px 139px;
+  padding: 0 !important;
+}
+
+.col-md-6 {
+  padding: 0 !important;
+}
+
+.card-column {
+  padding: 0 13px;
+  box-sizing: border-box;
+}
+
+.carousel-control-next, .carousel-control-prev {
+  width: 10%;
+  max-width: 40px;
+}
+
+@media (max-width: 768px) {
+
+  .titulo,
+  .texto {
+    margin: 0 !important;
+    padding: 0 36px !important;
+  }
+
+  .col-md-10 {
+    margin: 0 0 0 41px !important;
+    padding-left: 16px !important;
+    padding-top: 16px !important;
+
+  }
+
+  .carousel-inner {
+    overflow: hidden;
+  }
+
+  /* Evita espaço extra */
+  body, html {
+    overflow-x: hidden;
+  }
+
+
 }

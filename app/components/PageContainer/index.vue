@@ -18,7 +18,7 @@
                             <div v-for="(group, index) in groupedCards" :key="index"
                                 :class="['carousel-item', index === 0 ? 'active' : '']">
                                 <div class="row">
-                                    <div v-for="card in group" :key="card" class="col-12 col-md-6 col-lg-3">
+                                    <div v-for="card in group" :key="card" class="col-12 col-md-6 col-lg-3 card-column">
                                         <Card />
                                     </div>
                                 </div>
@@ -52,15 +52,22 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 
-const totalCards = 20
+const totalCards = 12
 const cards = Array.from({ length: totalCards }, (_, i) => i + 1)
-const groupedCards = []
-for (let i = 0; i < cards.length; i += 4) {
-  groupedCards.push(cards.slice(i, i + 4))
-}
+const groupedCards = ref([])
 
 const activeIndex = ref(0)
 let bsCarousel = null
+
+function groupCards() {
+  const isMobile = window.innerWidth < 768
+  const groupSize = isMobile ? 1 : 4
+
+  groupedCards.value = []
+  for (let i = 0; i < cards.length; i += groupSize) {
+    groupedCards.value.push(cards.slice(i, i + groupSize))
+  }
+}
 
 function goToSlide(index) {
   if (bsCarousel) {
@@ -69,6 +76,8 @@ function goToSlide(index) {
 }
 
 onMounted(() => {
+  groupCards()
+
   const carouselEl = document.getElementById('cardCarousel')
   if (carouselEl) {
     bsCarousel = new bootstrap.Carousel(carouselEl, {
@@ -76,10 +85,14 @@ onMounted(() => {
       ride: false,
     })
 
-    // Escuta a transição e atualiza o indicador
     carouselEl.addEventListener('slid.bs.carousel', (event) => {
       activeIndex.value = event.to
     })
   }
+
+  // Atualiza o agrupamento se a tela for redimensionada
+  window.addEventListener('resize', () => {
+    groupCards()
+  })
 })
 </script>

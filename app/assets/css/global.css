@@ -5,16 +5,21 @@
 }
 
 
-html, body {
+html,
+body {
     height: 100%;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+body{
+    overflow-x: hidden; /* Evita scroll horizontal */
+}
+
 .container-fluid {
-  padding: 0 !important;
-  margin: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
 .header {
@@ -23,10 +28,15 @@ html, body {
     height: 100%;
 
     overflow: hidden;
-    
+
     background: url('/img/banner.jpg');
     background-repeat: no-repeat;
     background-position: center;
-    background-origin: padding-box;
     background-size: cover;
+}
+
+@media (max-width: 768px) {
+    .header {
+        background-image: url('/img/banner_mobile.png') !important;
+    }
 }

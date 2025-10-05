@@ -71,3 +71,13 @@
   margin: 0;
   font-family: 'Jost', sans-serif;
 }
+
+/* Responsividade */
+@media (max-width: 768px) {
+.custom-form {
+    margin: 0 19px 0px 19px !important;
+    max-width: 100% !important;
+    padding: 18px 0px 46px 0px !important;
+}
+
+}
