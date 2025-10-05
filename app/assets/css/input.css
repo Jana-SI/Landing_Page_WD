@@ -26,6 +26,12 @@
   padding: 1rem 1.25rem;
 }
 
+.form-floating label::after {
+  background: #F8F8F8 0% 0% no-repeat padding-box;
+  color: black;
+  opacity: 1;
+}
+
 /* Corrige o label flutuante para acompanhar o novo formato */
 /* .form-floating > .form-control:focus ~ label,
 .form-floating > .form-control:not(:placeholder-shown) ~ label {
