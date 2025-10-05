@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     "@/assets/css/input.css",
     "@/assets/css/button.css",
     "@/assets/css/pagecontainer.css",
+    "@/assets/css/card.css",
   ],
   app: {
     head: {
@@ -25,7 +26,7 @@ export default defineNuxtConfig({
   modules: ["@nuxtjs/google-fonts"],
   googleFonts: {
     families: {
-      Poppins: [300, 900], // Inclui os pesos usados
+      Poppins: [300, 900],
     },
   },
 });

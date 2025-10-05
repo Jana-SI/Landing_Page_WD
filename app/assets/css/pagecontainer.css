@@ -1,10 +1,9 @@
-.pre-titulo {
+section{
+    background-color: #F2F2F2;
+}
 
-    position: absolute;
-    top: 549px;
-    left: 622px;
-    width: 122px;
-    height: 33px;
+.pre-titulo {
+    margin-bottom: -20px !important;
 
     text-align: center;
     font-family: 'Poppins', sans-serif;
@@ -18,12 +17,7 @@
 }
 
 .titulo {
-
-    position: absolute;
-    top: 574px;
-    left: 465px;
-    width: 436px;
-    height: 45px;
+    margin-top: -20px !important;
 
     text-align: center;
     font-family: 'Poppins', sans-serif;
@@ -36,13 +30,8 @@
 }
 
 .texto {
-
-  position: absolute;
-  top: 634px;
-  left: 231px;
-  width: 904px;
-  height: 67px;
-
+margin-top: 15px !important;
+margin-bottom: 20px !important;
   text-align: center;
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
@@ -52,4 +41,32 @@
   color: #252525;
   opacity: 1;
 
+}
+
+.custom-indicators {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  gap: 0.5rem;
+}
+
+.indicator-block {
+  height: 8px;
+  width: 8px;
+  background-color: #08377A;
+  opacity: 0.7;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicator-block.active {
+  height: 8px;
+  width: 39px;
+  background-color: #08377A;
+}
+
+.col-md-10{
+    margin-left: 139px !important;
+    margin-bottom: 139px !important;
+    padding: 0 !important;
 }
