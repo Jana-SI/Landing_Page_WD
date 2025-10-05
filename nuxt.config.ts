@@ -15,10 +15,17 @@ export default defineNuxtConfig({
     head: {
       script: [
         {
-          src: 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js'
-        }
-      ]
-    }
+          src: "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js",
+        },
+      ],
+    },
   },
   plugins: [{ src: "~/plugins/bootstrap.client.ts", mode: "client" }],
+
+  modules: ["@nuxtjs/google-fonts"],
+  googleFonts: {
+    families: {
+      Poppins: [300, 900], // Inclui os pesos usados
+    },
+  },
 });
