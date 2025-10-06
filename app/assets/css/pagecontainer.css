@@ -88,10 +88,8 @@ section {
   }
 
   .col-md-10 {
-    margin: 0 0 0 41px !important;
-    padding-left: 16px !important;
-    padding-top: 16px !important;
-
+    margin: 0 !important;
+    padding-top: 36px !important;
   }
 
 }

@@ -12,7 +12,7 @@
             </div>
 
             <div class="row">
-                <div class="col-md-10 offset-md-1">
+                <div class="col-md-10 offset-md-1 d-flex justify-content-center mt-3">
                     <div id="cardCarousel" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             <div v-for="(group, index) in groupedCards" :key="index"
