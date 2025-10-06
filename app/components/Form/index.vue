@@ -81,16 +81,18 @@ onMounted(() => {
 const maskWhatsapp = () => {
   let num = whatsapp.value.replace(/\D/g, "");
 
-  // Limita a 11 dígitos (máximo para celular com DDD)
-  num = num.slice(0, 11);
+  if (num.length > 11) {
+    num = num.slice(0, 11);
+    errors.value.whatsapp = "O número excede o limite de 11 dígitos.";
+  } else {
+    delete errors.value.whatsapp;
+  }
 
   if (num.length <= 10) {
-    // Telefone fixo: (99) 9999-9999
     whatsapp.value = num.replace(/(\d{0,2})(\d{0,4})(\d{0,4})/, (_, ddd, part1, part2) => {
       return `${ddd ? `(${ddd}` : ''}${ddd && part1 ? `) ${part1}` : ''}${part2 ? `-${part2}` : ''}`;
     });
   } else {
-    // Celular: (99) 99999-9999
     whatsapp.value = num.replace(/(\d{0,2})(\d{0,5})(\d{0,4})/, (_, ddd, part1, part2) => {
       return `${ddd ? `(${ddd}` : ''}${ddd && part1 ? `) ${part1}` : ''}${part2 ? `-${part2}` : ''}`;
     });
@@ -128,8 +130,12 @@ const onlyNumbers = (event) => {
 
 const handlePaste = (event) => {
   const pastedData = event.clipboardData.getData('Text').replace(/\D/g, "");
+
   if (pastedData.length > 11) {
     event.preventDefault();
+    errors.value.whatsapp = "Número colado excede o limite de 11 dígitos.";
+  } else {
+    errors.value.whatsapp = ""; // Limpa erro se estiver tudo certo
   }
 };
 
