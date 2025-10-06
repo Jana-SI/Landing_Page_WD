@@ -1,7 +1,7 @@
 <template>
-    <button :type="type" class="custom-btn w-100">
-        <slot></slot>
-    </button>
+  <button :type="type" class="custom-btn w-100">
+    <slot></slot>
+  </button>
 </template>
 
 <script setup>

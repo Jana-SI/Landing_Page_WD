@@ -6,7 +6,9 @@
                     <h2 class="pre-titulo">Texto aqui</h2>
                     <h1 class="titulo">Mais outro bem texto aqui</h1>
                     <p class="texto">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mattis risus sit amet libero porttitor laoreet. Nullam ut volutpat nisi. Phasellus id tempus orci. Donec eget orci eget dolor condimentum sodales.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mattis risus sit amet libero
+                        porttitor laoreet. Nullam ut volutpat nisi. Phasellus id tempus orci. Donec eget orci eget dolor
+                        condimentum sodales.
                     </p>
                 </div>
             </div>
@@ -25,7 +27,6 @@
                             </div>
                         </div>
 
-                        <!-- Controles -->
                         <button class="carousel-control-prev" type="button" data-bs-target="#cardCarousel"
                             data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -54,8 +55,8 @@ import { ref, onMounted } from 'vue'
 
 const totalCards = 12
 const cards = Array.from({ length: totalCards }, () => ({
-  title: 'Lorem ipsum dolor sit amet?',
-  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse augue sem, molestie non maximus non, fermentum quis urna. In porta condimentum odio non varius. Nam id euismod augue, sit amet placerat quam.'
+    title: 'Lorem ipsum dolor sit amet?',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse augue sem, molestie non maximus non, fermentum quis urna. In porta condimentum odio non varius. Nam id euismod augue, sit amet placerat quam.'
 }))
 const groupedCards = ref([])
 
@@ -93,7 +94,6 @@ onMounted(() => {
         })
     }
 
-    // Atualiza o agrupamento se a tela for redimensionada
     window.addEventListener('resize', () => {
         groupCards()
     })

@@ -3,32 +3,17 @@
     <form class="custom-form" @submit.prevent="handleSubmit">
       <fieldset>
 
-        <!-- Campo E-mail -->
         <div class="form-group">
-          <Input
-            label="E-mail"
-            type="email"
-            v-model="email"
-            :class="{ 'is-invalid': errors.email }"
-            @blur="validateEmail"
-          />
+          <Input label="E-mail" type="email" v-model="email" :class="{ 'is-invalid': errors.email }"
+            @blur="validateEmail" />
           <div v-if="errors.email" class="invalid-feedback">
             {{ errors.email }}
           </div>
         </div>
 
-        <!-- Campo WhatsApp -->
         <div class="form-group">
-          <Input
-            label="WhatsApp"
-            type="tel"
-            v-model="whatsapp"
-            :class="{ 'is-invalid': errors.whatsapp }"
-            @blur="validateWhatsapp"
-            @input="maskWhatsapp"
-            @keypress="onlyNumbers"
-            @paste="handlePaste"
-          />
+          <Input label="WhatsApp" type="tel" v-model="whatsapp" :class="{ 'is-invalid': errors.whatsapp }"
+            @blur="validateWhatsapp" @input="maskWhatsapp" @keypress="onlyNumbers" @paste="handlePaste" />
           <div v-if="errors.whatsapp" class="invalid-feedback">
             {{ errors.whatsapp }}
           </div>
@@ -38,12 +23,10 @@
           <span class="text-btn">Enviar</span>
         </Button>
 
-        <!-- Mensagem de sucesso -->
         <div v-if="successMessage" class="alert alert-success">
           {{ successMessage }}
         </div>
 
-        <!-- Mensagem de erro geral -->
         <div v-if="generalError" class="alert alert-danger">
           {{ generalError }}
         </div>
@@ -51,7 +34,6 @@
       </fieldset>
     </form>
 
-    <!-- Exibição do último dado salvo -->
     <div v-if="dados" class="dados-enviados">
       <h3>📋 Informações salvas:</h3>
       <p>📧 {{ dados.email }} <br> 📱 {{ dados.whatsapp }}</p>
@@ -71,7 +53,7 @@ const dados = ref(null);
 
 onMounted(() => {
   localStorage.removeItem("dadosForm");
-  
+
   const salvo = localStorage.getItem("dadosForm");
   if (salvo) {
     dados.value = JSON.parse(salvo);
@@ -122,7 +104,6 @@ const validateWhatsapp = () => {
 
 const onlyNumbers = (event) => {
   const charCode = event.charCode ? event.charCode : event.keyCode;
-  // Permite apenas números (0 a 9)
   if (charCode < 48 || charCode > 57) {
     event.preventDefault();
   }
@@ -135,7 +116,7 @@ const handlePaste = (event) => {
     event.preventDefault();
     errors.value.whatsapp = "Número colado excede o limite de 11 dígitos.";
   } else {
-    errors.value.whatsapp = ""; // Limpa erro se estiver tudo certo
+    errors.value.whatsapp = "";
   }
 };
 
@@ -156,8 +137,8 @@ const handleSubmit = () => {
 
     setTimeout(() => {
       successMessage.value = "";
-      dados.value = null; // Isso vai esconder os dados após 5 segundos
-      localStorage.removeItem("dadosForm");      
+      dados.value = null;
+      localStorage.removeItem("dadosForm");
     }, 5000);
   } else {
     successMessage.value = "";

@@ -13,8 +13,8 @@ body {
     box-sizing: border-box;
 }
 
-body{
-    overflow-x: hidden; /* Evita scroll horizontal */
+body {
+    overflow-x: hidden;
 }
 
 .container-fluid {
@@ -33,6 +33,7 @@ body{
     background-repeat: no-repeat;
     background-position: center top;
     background-size: cover;
+    background-attachment: fixed !important;
 }
 
 @media (max-width: 768px) {

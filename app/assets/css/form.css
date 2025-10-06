@@ -41,7 +41,7 @@
 .alert-success {
   background-color: #d4edda;
   color: #155724;
-  margin-bottom: 32px; /* afasta dos dados salvos */
+  margin-bottom: 32px;
 }
 
 .alert-danger {
@@ -50,13 +50,13 @@
 }
 
 .dados-enviados {
-  background-color: #e3f2fd; /* azul claro */
-  border: 1px solid #90caf9; /* azul mais forte */
+  background-color: #e3f2fd;
+  border: 1px solid #90caf9;
   border-radius: 8px;
   margin-top: -46px;
   padding: 16px;
   font-size: 16px;
-  color: #0d47a1; /* azul escuro */
+  color: #0d47a1;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -72,12 +72,11 @@
   font-family: 'Jost', sans-serif;
 }
 
-/* Responsividade */
 @media (max-width: 768px) {
-.custom-form {
+  .custom-form {
     margin: 0 19px 0px 19px !important;
     max-width: 100% !important;
     padding: 18px 0px 46px 0px !important;
-}
+  }
 
 }

@@ -3,7 +3,6 @@ section {
   padding: 42px 0 46px 0;
 }
 
-/* Títulos e texto */
 .pre-titulo {
   text-align: center;
   font-family: 'Poppins', sans-serif;
@@ -39,7 +38,6 @@ section {
   opacity: 1;
 }
 
-/* Indicadores do carrossel */
 .custom-indicators {
   display: flex;
   justify-content: center;
@@ -72,6 +70,7 @@ section {
 }
 
 @media (max-width: 768px) {
+
   .titulo,
   .texto {
     margin: 0 !important;
