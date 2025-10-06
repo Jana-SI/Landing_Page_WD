@@ -26,6 +26,8 @@
             :class="{ 'is-invalid': errors.whatsapp }"
             @blur="validateWhatsapp"
             @input="maskWhatsapp"
+            @keypress="onlyNumbers"
+            @paste="handlePaste"
           />
           <div v-if="errors.whatsapp" class="invalid-feedback">
             {{ errors.whatsapp }}
@@ -78,10 +80,20 @@ onMounted(() => {
 
 const maskWhatsapp = () => {
   let num = whatsapp.value.replace(/\D/g, "");
+
+  // Limita a 11 dígitos (máximo para celular com DDD)
+  num = num.slice(0, 11);
+
   if (num.length <= 10) {
-    whatsapp.value = num.replace(/(\d{2})(\d{4})(\d{0,4})/, "($1) $2-$3");
+    // Telefone fixo: (99) 9999-9999
+    whatsapp.value = num.replace(/(\d{0,2})(\d{0,4})(\d{0,4})/, (_, ddd, part1, part2) => {
+      return `${ddd ? `(${ddd}` : ''}${ddd && part1 ? `) ${part1}` : ''}${part2 ? `-${part2}` : ''}`;
+    });
   } else {
-    whatsapp.value = num.replace(/(\d{2})(\d{5})(\d{0,4})/, "($1) $2-$3");
+    // Celular: (99) 99999-9999
+    whatsapp.value = num.replace(/(\d{0,2})(\d{0,5})(\d{0,4})/, (_, ddd, part1, part2) => {
+      return `${ddd ? `(${ddd}` : ''}${ddd && part1 ? `) ${part1}` : ''}${part2 ? `-${part2}` : ''}`;
+    });
   }
 };
 
@@ -97,12 +109,27 @@ const validateEmail = () => {
 
 const validateWhatsapp = () => {
   const cleaned = whatsapp.value.replace(/\D/g, "");
-  if (!whatsapp.value) {
+  if (!cleaned) {
     errors.value.whatsapp = "O campo WhatsApp é obrigatório.";
   } else if (cleaned.length < 10 || cleaned.length > 11) {
-    errors.value.whatsapp = "Informe um número válido com DDD.";
+    errors.value.whatsapp = "Informe um número válido com DDD (10 ou 11 dígitos).";
   } else {
     delete errors.value.whatsapp;
+  }
+};
+
+const onlyNumbers = (event) => {
+  const charCode = event.charCode ? event.charCode : event.keyCode;
+  // Permite apenas números (0 a 9)
+  if (charCode < 48 || charCode > 57) {
+    event.preventDefault();
+  }
+};
+
+const handlePaste = (event) => {
+  const pastedData = event.clipboardData.getData('Text').replace(/\D/g, "");
+  if (pastedData.length > 11) {
+    event.preventDefault();
   }
 };
 
